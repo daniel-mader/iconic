@@ -33,6 +33,10 @@ pnpm dev
 - Live proof preview and PNG or JPEG download, with the file size shown up front.
 - Light and dark mode, following the device setting by default.
 
+## Third-party icons
+
+The Dashboard Icons search loads icons at runtime from the [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons) repository through jsDelivr, as that project recommends. The collection is licensed under [Apache 2.0](https://github.com/homarr-labs/dashboard-icons/blob/main/LICENSE). Iconic doesn't bundle or redistribute any icons. Product names and logos are trademarks of their respective owners. Whether a logo may be used for a particular purpose depends on its owner's terms, not on Iconic or the icon collection.
+
 ## Deployment
 
 `pnpm build` writes a static site to `./build` that any static host can serve. The Content Security Policy ships as a `<meta>` tag, which can't express every protection, so configure the host to also send these headers:
