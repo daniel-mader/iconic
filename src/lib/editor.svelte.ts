@@ -1,5 +1,5 @@
 import { decodeImage, type SourceImage } from '#lib/browser/image.ts';
-import { iconUrl, type DashboardIcon } from '#lib/dashboard-icons/dashboard-icons.ts';
+import { fetchDashboardIcon, type DashboardIcon } from '#lib/dashboard-icons/dashboard-icons.ts';
 import { resolveBackground, type ExportFormat } from '#lib/export/export.ts';
 import { DEFAULT_OPTIONS, withSize, type LogoOptions } from '#lib/logo/options.ts';
 import { planLogo } from '#lib/logo/plan.ts';
@@ -52,7 +52,7 @@ export class Editor {
 
 	loadIcon(icon: DashboardIcon): Promise<boolean> {
 		return this.#load(icon.name, (signal) =>
-			fetchImage(iconUrl(icon), { fetch: boundFetch, signal })
+			fetchDashboardIcon(icon, { fetch: boundFetch, signal })
 		);
 	}
 

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import {
+		DASHBOARD_ICONS_LICENSE_URL,
 		fetchIconIndex,
-		iconUrl,
 		searchIcons,
 		type DashboardIcon
 	} from '#lib/dashboard-icons/dashboard-icons.ts';
+	import IconThumb from './IconThumb.svelte';
 
 	interface Props {
 		onselect: (icon: DashboardIcon) => void;
@@ -19,6 +20,8 @@
 	let error = $state<string | null>(null);
 
 	const results = $derived(icons ? searchIcons(icons, query) : []);
+
+	const link = 'underline decoration-rule underline-offset-2 hover:decoration-mark';
 
 	/** Fetches the icon index on first use rather than on page load. */
 	async function loadIndex() {
@@ -38,14 +41,12 @@
 	</label>
 	<p class="text-sm text-muted">
 		Search app and service logos from
-		<a
-			href="https://dashboardicons.com"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="underline decoration-rule underline-offset-2 hover:decoration-mark"
-		>
+		<a href="https://dashboardicons.com" target="_blank" rel="noopener noreferrer" class={link}>
 			dashboardicons.com</a
-		>.
+		>, available under the
+		<a href={DASHBOARD_ICONS_LICENSE_URL} target="_blank" rel="noopener noreferrer" class={link}>
+			Apache 2.0 license</a
+		>. Logos are trademarks of their respective owners.
 	</p>
 	<input
 		id="icon-search"
@@ -84,15 +85,7 @@
 						title={icon.name}
 						class="flex w-full flex-col items-center gap-1.5 rounded-lg border border-transparent p-2 text-xs text-muted transition-colors hover:border-rule hover:bg-surface hover:text-ink disabled:opacity-40"
 					>
-						<img
-							src={iconUrl(icon).href}
-							alt=""
-							width="40"
-							height="40"
-							loading="lazy"
-							referrerpolicy="no-referrer"
-							class="size-10 object-contain"
-						/>
+						<IconThumb {icon} />
 						<span class="w-full truncate">{icon.name}</span>
 						<span class="sr-only">Use this icon</span>
 					</button>
