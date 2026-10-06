@@ -17,8 +17,17 @@
 	>
 		<a href="/" class="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight">
 			<svg viewBox="0 0 24 24" class="size-6 text-mark" fill="none" aria-hidden="true">
-				<circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.75" />
-				<path d="M12 1.5v21M1.5 12h21" stroke="currentColor" stroke-width="1.75" />
+				<!-- Dashes are centered on the corners: a solid L at each corner, one dash per side. -->
+				<rect
+					x="3"
+					y="3"
+					width="18"
+					height="18"
+					stroke="currentColor"
+					stroke-width="2.25"
+					stroke-dasharray="6 3"
+					stroke-dashoffset="3"
+				/>
 			</svg>
 			Iconic
 		</a>
