@@ -7,3 +7,8 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Vendored agent skills (managed by `npx skills`, see skills-lock.json)
+/.agents/
+/.claude/skills/
+/skills-lock.json
