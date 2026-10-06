@@ -1,0 +1,3 @@
+# Dashboard Icons via jsDelivr
+
+dashboardicons.com has no public API. Its icons live in the homarr-labs/dashboard-icons GitHub repository (Apache-2.0), which jsDelivr serves with permissive CORS headers. That includes `tree.json`, an index of every file (about 40 KB gzipped). Iconic loads that index on first use and fetches icons directly from `cdn.jsdelivr.net`, the only third-party origin the CSP allows for `<img>` (thumbnails). Fetches go through `connect-src https:`, which link import needs anyway. We rejected bundling the icons, which would add a large, quickly outdated snapshot to the app, and scraping dashboardicons.com, which is fragile and not meant for programmatic use.
