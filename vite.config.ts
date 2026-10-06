@@ -41,6 +41,18 @@ export default defineConfig({
 	],
 	test: {
 		expect: { requireAssertions: true },
+		coverage: {
+			provider: 'v8',
+			include: ['src/lib/**/*.ts'],
+			exclude: [
+				'src/lib/**/*.spec.ts',
+				// Browser-only glue (canvas, image decoding, runes state) needs a real browser.
+				'src/lib/browser/**',
+				'src/lib/**/*.svelte.ts'
+			],
+			reporter: ['text', 'html', 'json-summary'],
+			thresholds: { lines: 95, functions: 95, branches: 90, statements: 95 }
+		},
 		projects: [
 			{
 				extends: './vite.config.ts',
